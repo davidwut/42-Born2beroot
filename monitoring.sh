@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arch=$(uname -m)
+architecture=$(uname -a)
 cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 vcpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 memused=$(free -m | grep Mem | awk '{printf "#Memory Usage: %s/%sMB (%.2f)",$3,$2,$3*100/$2}')
@@ -15,15 +15,19 @@ netip=$(hostname -I)
 netmac=$(ip link | awk '/ether/ {print $2}')
 sudo=$(grep 'sudo ' /var/log/sudo/sudo.log | wc -l)
 
-wall '#Architecture: '$arch\
-	'#CPU physical: '$cpus\
-	'#vCPU: '$vcpus\
-	$memused\
-	$diskused\
-	$cpuload\
-	$lastboot\
-	'#LVM use: '$lvmuse\
-	$tcpcon\
-	'#User log: '$userlog\
-	'#Network: IP '$netip'('$netmac')'\
+wall '#Architecture: '$arch$'\n'\
+	'#CPU physical: '$cpus$'\n'\
+	'#vCPU: '$vcpus$'\n'\
+	$memused$'\n'\
+	$diskused$'\n'\
+	$cpuload$'\n'\
+	$lastboot$'\n'\
+	'#LVM use: '$lvmuse$'\n'\
+	$tcpcon$'\n'\
+	'#User log: '$userlog$'\n'\
+	'#Network: IP '$netip'('$netmac')'$'\n'\
 	'#Sudo: '$sudo' cmd'
+
+# sudo crontab -u root -e
+# */10 * * * * /usr/local/bin/monitoring.sh
+# @reboot /usr/local/bin/monitoring.sh
