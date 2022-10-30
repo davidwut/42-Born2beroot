@@ -28,6 +28,7 @@ wall '#Architecture: '$arch$'\n'\
 	'#Network: IP '$netip'('$netmac')'$'\n'\
 	'#Sudo: '$sudo' cmd'
 
+# minute hour day(month) month day(week) command
 # sudo crontab -u root -e
 # */10 * * * * /usr/local/bin/monitoring.sh
 # @reboot /usr/local/bin/monitoring.sh
