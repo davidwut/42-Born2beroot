@@ -32,3 +32,9 @@ wall $'\t#Architecture: '$architecture$'\n'\
 # sudo crontab -u root -e
 # */10 * * * * /usr/local/bin/monitoring.sh
 # @reboot /usr/local/bin/monitoring.sh
+
+#/etc/pam.d/common-password
+#systemctl restart ssh
+#ufw status numbered
+#/etc/ssh/sshd_config
+#/etc/login.defs
